@@ -4,9 +4,9 @@
 #include <tuple>
 #include <functional>
 #include <Eigen/Core>
-#include <utilities/types.h>
-#include <layers.h>
-#include <loss.h>
+#include "utilities/types.h"
+#include "layers.h"
+#include "loss.h"
 
 namespace Neural {
 	/*

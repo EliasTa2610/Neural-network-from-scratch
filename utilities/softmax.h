@@ -5,8 +5,8 @@
 #include <functional>
 #include <iostream>
 #include <Eigen/Core>
-#include <utilities/types.h>
-#include <utilities/traits_concepts.h>
+#include "types.h"
+#include "traits_concepts.h"
 
 enum class Ax {Zero, One, None};
 

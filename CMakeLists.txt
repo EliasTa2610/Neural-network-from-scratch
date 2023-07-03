@@ -19,7 +19,9 @@ set(HEADERS
     loss.h
 )
 
+include_directories(${EIGEN_INCLUDE_DIRS})
+
 add_executable(NeuralNet ${SOURCES} ${HEADERS})
 
-find_package(Eigen3 REQUIRED)
-target_link_libraries(NeuralNet PUBLIC Eigen3)
+find_package(Eigen3 REQUIRED NO_MODULE)
+target_link_libraries(NeuralNet PUBLIC Eigen3::Eigen)

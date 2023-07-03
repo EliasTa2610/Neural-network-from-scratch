@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <execution>
 #include <Eigen/Core>
-#include <utilities/types.h>
+#include "types.h"
 
 template<typename UnaryFunction>
 void rangeParExec(Eigen::Index max, const UnaryFunction& func) {

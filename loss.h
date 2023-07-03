@@ -2,10 +2,10 @@
 
 #pragma once
 #include <Eigen/Core>
-#include <utilities/types.h>
-#include <utilities/paral.h>
-#include <utilities/softmax.h>
-#include <labels.h>
+#include "utilities/types.h"
+#include "utilities/paral.h"
+#include "utilities/softmax.h"
+#include "labels.h"
 
 namespace Neural {
 	/*

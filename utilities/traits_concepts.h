@@ -2,7 +2,7 @@
 
 #pragma once
 #include <Eigen/Core>
-#include <utilities/types.h>
+#include "types.h"
 
 template<typename Derived>
 struct EigenTraits {
