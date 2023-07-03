@@ -19,7 +19,7 @@ int main()
     // Step 1: Load data
     constexpr unsigned num_files = 3;
 
-    string data_path = "./data/iris_data_files/";
+    string data_path = "../data/iris_data_files/";
     string filenames[num_files] = { "iris_training.dat", 
                                     "iris_validation.dat", 
                                     "iris_test.dat" };
