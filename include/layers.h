@@ -3,9 +3,9 @@
 #pragma once
 #include <cmath>
 #include <Eigen/Core>
-#include <utilities/types.h>
-#include <utilities/traits_concepts.h>
-#include <utilities/softmax.h>
+#include "../utilities/types.h"
+#include "../utilities/traits_concepts.h"
+#include "../utilities/softmax.h"
 
 namespace Neural {
 	/*

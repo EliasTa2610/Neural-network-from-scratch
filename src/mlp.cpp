@@ -8,9 +8,9 @@
 #include <functional>
 #include <limits>
 #include <Eigen/Core>
-#include "input.h"
-#include "net.h"
-#include "labels.h"
+#include "../include/input.h"
+#include "../include/net.h"
+#include "../include/labels.h"
 
 using std::string;
 

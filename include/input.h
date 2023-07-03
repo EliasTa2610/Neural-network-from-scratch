@@ -4,7 +4,7 @@
 #include <string>
 #include <istream>
 #include <Eigen/Dense>
-#include "utilities/types.h"
+#include "../utilities/types.h"
 
 namespace Input {
 	// Efficient resize for amortized O(1) element-wise copies

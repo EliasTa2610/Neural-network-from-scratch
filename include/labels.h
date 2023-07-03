@@ -1,12 +1,11 @@
 // labels.h: Contains facilities for dealing with indices and one-hot-shot labels 
 
 #pragma once
-#include <execution>
 #include <stdexcept>
 #include <Eigen/Core>
 #include "utilities/types.h"
-#include "utilities/traits_concepts.h"
-#include "utilities/paral.h"
+#include "../utilities/traits_concepts.h"
+#include "../utilities/paral.h"
 
 namespace Labels {
 	// Internal implementations

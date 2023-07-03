@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.12)
 project(NeuralNet)
 
-set(CMAKE_CXX_STANDARD 20)  # Set the desired C++ standard
+set(CMAKE_CXX_STANDARD 20)
 
 set(SOURCES 
-    mlp.cpp
+    src/mlp.cpp
 )
 
 set(HEADERS
@@ -12,14 +12,16 @@ set(HEADERS
     utilities/paral.h
     utilities/softmax.h
     utilities/traits_concepts.h
-    input.h
-    labels.h
-    layers.h
-    net.h
-    loss.h
+    include/input.h
+    include/labels.h
+    include/layers.h
+    include/net.h
+    include/loss.h
 )
 
 include_directories(${EIGEN_INCLUDE_DIRS})
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
 
 add_executable(NeuralNet ${SOURCES} ${HEADERS})
 
