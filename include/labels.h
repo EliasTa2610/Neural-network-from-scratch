@@ -3,7 +3,7 @@
 #pragma once
 #include <stdexcept>
 #include <Eigen/Core>
-#include "utilities/types.h"
+#include "../utilities/types.h"
 #include "../utilities/traits_concepts.h"
 #include "../utilities/paral.h"
 
