@@ -5,7 +5,7 @@
 #include "../utilities/types.h"
 #include "../utilities/paral.h"
 #include "../utilities/softmax.h"
-#include "../include/labels.h"
+#include "labels.h"
 
 namespace Neural {
     /*
