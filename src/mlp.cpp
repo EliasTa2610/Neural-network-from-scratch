@@ -26,7 +26,7 @@ int main()
     
     ArrayX_RowMajor<float> train_data_labels, val_data_labels, test_data_labels;
     ArrayX_RowMajor<float>* data_objs[num_files] = { &train_data_labels, &val_data_labels,
-                                                                &test_data_labels };
+                                                     &test_data_labels };
     for (int i = 0; i < num_files; i++) {
         string filename = data_path + filenames[i]; 
         std::ifstream file(filename);
@@ -40,7 +40,7 @@ int main()
         return std::make_pair(inputs, ones_labels);
     };
 
-	auto train_pair = toDataIndicesPairs(train_data_labels);
+    auto train_pair = toDataIndicesPairs(train_data_labels);
     auto val_pair = toDataIndicesPairs(val_data_labels);
     auto test_pair = toDataIndicesPairs(val_data_labels);
 
@@ -84,8 +84,4 @@ int main()
     // Step 5: Test the neural net
     auto test_misclas = nn.test(test_inputs, test_labels).second;
     std::cout << "Test misclass. loss: " << test_misclas << std::endl;
-
-     
-
-
 }
