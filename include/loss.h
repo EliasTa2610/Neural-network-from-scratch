@@ -13,9 +13,9 @@ namespace Neural {
     *
     * @param outputs: Outputs of output layer of network
     * @param one_hot_labels: One-hot-shot encoded labels
-    * @return: std::pair<std::pair<float, float>, MatrixX_RowMajor<float>> where
+    * @return: `std::pair<std::pair<float, float>, MatrixX_RowMajor<float>>` where
     *          floats are cross-entropy and misclassification resp. and 
-               MatrixX_RowMajor<float> is the gradient of the categorical cross-entropy
+               `MatrixX_RowMajor<float>` is the gradient of the categorical cross-entropy
                loss wrt the incoming signals (assuming no activation function)
     */
     static auto _softMaxLoss(const Eigen::Ref<const MatrixX_RowMajor<float>>& outputs,
