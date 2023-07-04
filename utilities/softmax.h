@@ -8,7 +8,7 @@
 #include "types.h"
 #include "traits_concepts.h"
 
-
+// Replaced `std::expf`. Necessary for compatibility with gcc and clang.
 static float myExp(float x) {
     return static_cast<float>(std::exp(static_cast<double>(x)));
 }

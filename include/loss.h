@@ -7,6 +7,11 @@
 #include "../utilities/softmax.h"
 #include "labels.h"
 
+// Replaces `std::logf`. Necessary for compatibility with gcc and clang.
+static float myLog(float x) {
+    return static_cast<float>(std::log(static_cast<double>(x)));
+}
+
 namespace Neural {
     /*
     * @brief: Implements categorical cross-entropy (softmax) loss
@@ -18,10 +23,6 @@ namespace Neural {
                `MatrixX_RowMajor<float>` is the gradient of the categorical cross-entropy
                loss wrt the incoming signals (assuming no activation function)
     */
-    static float myLog(float x) {
-        return static_cast<float>(std::log(static_cast<double>(x)));
-    }
-
     static auto _softMaxLoss(const Eigen::Ref<const MatrixX_RowMajor<float>>& outputs,
                              const Eigen::Ref<const MatrixX_RowMajor<bool>>& one_hot_labels) {
         auto num_rows = one_hot_labels.rows();
