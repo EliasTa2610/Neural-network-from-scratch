@@ -7,6 +7,11 @@
 #include "../utilities/softmax.h"
 #include "labels.h"
 
+// Replaces `std::logf`. Necessary for compatibility with gcc and clang.
+static float myLog(float x) {
+    return static_cast<float>(std::log(static_cast<double>(x)));
+}
+
 namespace Neural {
     /*
     * @brief: Implements categorical cross-entropy (softmax) loss
@@ -21,11 +26,11 @@ namespace Neural {
     static auto _softMaxLoss(const Eigen::Ref<const MatrixX_RowMajor<float>>& outputs,
                              const Eigen::Ref<const MatrixX_RowMajor<bool>>& one_hot_labels) {
         auto num_rows = one_hot_labels.rows();
-        auto& labels_float = one_hot_labels.cast<float>();
+        auto& labels_float = one_hot_labels.template cast<float>();
         auto softmaxed = softMax(outputs, Ax::One);
         
         auto probs = (softmaxed.array() * labels_float.array()).rowwise().sum();
-        auto logits = probs.unaryExpr(std::ref(std::logf));
+        auto logits = probs.unaryExpr(std::ref(myLog));
         float cross_entropy = (-1.0 / (float)num_rows) * logits.sum();
         
         ArrayX_RowMajor<int> max_col = ArrayX_RowMajor<int>(num_rows, 1);
@@ -38,7 +43,7 @@ namespace Neural {
                 max_col(row_number) = i;
             }
         );
-        float misclas = (1.0 / (float)num_rows)*((max_col != indices_labels.array()).cast<float>().sum());
+        float misclas = (1.0 / (float)num_rows)*((max_col != indices_labels.array()).template cast<float>().sum());
 
         auto gradient = (1.0 / num_rows) * (softmaxed - labels_float);
 
