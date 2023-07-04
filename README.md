@@ -36,7 +36,7 @@ Following instructions are for Bash shell. Adapt as needed. On Windows you may u
 
 3. Download the data set from [here](http://www.code-spot.co.za/downloads/neural_net/iris_data_files.zip). Unzip `iris_data_files` directory under`Neural-network-from-scratch/data/`:
 
-   `$ wget http://www.code-spot.co.za/downloads/neural_net/iris_data_files.zip ./data`
+   `$ wget http://www.code-spot.co.za/downloads/neural_net/iris_data_files.zip ./data`\
    `$ unzip ./data/iris_data_files.zip .`
 
 4. Run `cmake`:
@@ -55,7 +55,7 @@ Following instructions are for Bash shell. Adapt as needed. On Windows you may u
 
 5. Run the executable:
 
-   `$ cd ./build`
+   `$ cd ./build`\
    `$ ./NeuralNet`
 
 ## Possible Roadmap
