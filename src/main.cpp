@@ -66,10 +66,11 @@ int main()
     float val_loss_new = std::numeric_limits<float>::max() - 1;
     int violations = 0;
 
-    // Stopping condition for training loop is whether validation loss (categorical cross entropy) has
-    // stopped decreasing 3 times.
+    // The training loop will stop when either of the following conditions is met:
+    // 1. The validation loss (categorical cross entropy) has stopped decreasing in total 3 times
+    // 2. 1000 iterations have been reached
     int i = 0;
-    while (violations < 3) {
+    while (violations < 3 && i < 1000) {
         i++;
 
         nn.train(decayed_lr);

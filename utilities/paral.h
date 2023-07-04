@@ -9,7 +9,7 @@
 template<typename UnaryFunction>
 void rangeParExec(Eigen::Index max, const UnaryFunction& func) {
     MatColX<int> range(max);
-    range.setLinSpaced(0, (int) max);
+    range.setLinSpaced(0, (int)max);
 
     std::for_each(
         std::execution::par,
