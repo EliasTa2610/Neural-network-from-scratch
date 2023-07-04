@@ -47,7 +47,7 @@ Following instructions are for Bash shell. Adapt as needed. On Windows you may u
 
    `$ cmake -DCMAKE_CXX_COMPILER=<path-to-C++-compiler> .` 
 
-   Note that `cmake` need to be made aware of the directory in which Eigen's `.cmake` extension files reside. If this isn't the case out of the box, you may need to modify `Neural-network-from-scratch/CMakeLists.txt` to set the environment variable `EIGEN_INCLUDE_DIRS` or `CMAKE_PREFIX_PATH`.
+   Note that `cmake` need to be made aware of the directory in which Eigen resides. If this isn't the case out of the box, you may need to modify `Neural-network-from-scratch/CMakeLists.txt` to set the environment variable `EIGEN_INCLUDE_DIRS` or `CMAKE_PREFIX_PATH`.
 
 5. Build the executable:
 
