@@ -36,7 +36,7 @@ int main()
     // Step 2: Prepare data
     auto toDataIndicesPairs = [](auto& data_labels) {
         auto inputs = data_labels(Eigen::all, Eigen::seq(0, 3));
-        auto ones_labels = data_labels(Eigen::all, Eigen::lastN(3)).cast<bool>();
+        auto ones_labels = data_labels(Eigen::all, Eigen::lastN(3)).template cast<bool>();
         return std::make_pair(inputs, ones_labels);
     };
 

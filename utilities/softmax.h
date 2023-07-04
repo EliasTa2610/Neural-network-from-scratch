@@ -8,10 +8,15 @@
 #include "types.h"
 #include "traits_concepts.h"
 
+
+static float myExp(float x) {
+    return static_cast<float>(std::exp(static_cast<double>(x)));
+}
+
 enum class Ax {Zero, One, None};
 
 auto softMax(const Eigen::Ref<const MatrixX_RowMajor<float>>& input, Ax axis = Ax::None) {
-    auto raised = input.unaryExpr(std::ref(std::expf)).eval();
+    auto raised = input.unaryExpr(std::ref(myExp)).eval();
     
     if (axis == Ax::Zero) {
         MatRowX<float> s = raised.colwise().sum();
