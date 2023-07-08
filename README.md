@@ -10,18 +10,18 @@ Backend code is entirely templated, thus headers only. Neural network pipeline u
 
 ## Requirements and Dependencies
 
-Versions of packages correspond to my local installations; may work with other versions.
+Versions of packages correspond to my local installations; may also work with other versions.
 
 - CMake (3.12)
 - Eigen C++ library (3.4.0)
-- C++ compiler with C++20 support
 - GNU Make (4.3) if using command line-based compiler **or** Microsoft Visual Studio 2022 (17.6.2)
+- C++ compiler with support for C++20 and `pragma once`
 
 ### Tested compilers
 
 - g++ (11.3.5)
 - clang++ (14.0.0)
-- MSVC 19.36.32532 for x64 
+- MSVC (19.36.32532 for x64)
 
 ## Build and Run
 
@@ -72,7 +72,7 @@ Instructions are for Bash shell. Adapt as needed. On Windows you may use [git ba
 ## Possible Roadmap
 
 - Implement more layer types (different activation functions)
-- Support symbolic differentiation so that activation and differentiation functions do not have to be defined separartely
+- Support symbolic differentiation so that activation and differentiation functions do not have to be defined separately
 - Implement more loss functions (e.g. mse, exponential loss)
 - Show training progress of neural network via a plotting library
 - Add support for regularization
