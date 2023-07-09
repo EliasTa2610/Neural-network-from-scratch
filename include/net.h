@@ -23,7 +23,7 @@ namespace Neural {
     *                    `std::pair<EigenType_1, EigenType_1> seedBackProp(EigenType_1, EigenType_1)` and 
     *                    `void updateWeights(EigenType_1, EigenType_1, float)`
     * @tparam Impl: Class of the dervied class (for CRTP). Expected to have member variable `T loss` and
-    *               member function `T evaluate(EigenType_1, EigenType_2)` where `T` can vary.
+    *               member function `T evaluate(EigenType_1, EigenType_2)` where `T` can vary
     */
     template <typename EigenType_1, typename EigenType_2, typename LayerType, 
               template <typename, typename, typename> class Impl>
