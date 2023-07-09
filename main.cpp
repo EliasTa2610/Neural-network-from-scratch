@@ -1,5 +1,6 @@
-// main.cpp : This file contains the `main` function. Program execution begins and ends there
-//
+// main.cpp : This file contains the `main` function
+// Program execution begins and ends here
+// Meant to showcase backend code
 
 #include <iostream>
 #include <fstream>
@@ -8,9 +9,9 @@
 #include <functional>
 #include <limits>
 #include <Eigen/Core>
-#include "../include/input.h"
-#include "../include/net.h"
-#include "../include/labels.h"
+#include "include/input.h"
+#include "include/net.h"
+#include "include/labels.h"
 
 using std::string;
 
@@ -80,6 +81,11 @@ int main()
         val_loss = val_loss_new;
         
         decayed_lr = lr/(1.0 + (float)i * decay_rate);
+
+        // Display progress
+        if (i % 20 == 0) {
+            std::cout << "Val. CE loss: " << val_loss << std::endl; 
+        }
    }
 
     // Step 5: Test the neural net
