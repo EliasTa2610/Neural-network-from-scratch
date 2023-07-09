@@ -4,7 +4,7 @@ project(NeuralNet)
 set(CMAKE_CXX_STANDARD 20)
 
 set(SOURCES 
-    src/main.cpp
+    main.cpp
 )
 
 set(HEADERS
