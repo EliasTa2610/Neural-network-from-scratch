@@ -1,5 +1,6 @@
-// main.cpp : This file contains the `main` function. Program execution begins and ends there
-//
+// main.cpp : This file contains the `main` function
+// Program execution begins and ends here
+// Meant to showcase backend code
 
 #include <iostream>
 #include <fstream>
