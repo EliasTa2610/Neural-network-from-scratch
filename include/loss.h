@@ -7,7 +7,7 @@
 #include "../utilities/softmax.h"
 #include "labels.h"
 
-// Replaces `std::logf`. Necessary for compatibility with gcc and clang.
+// Replaces `std::logf`. Necessary for compatibility with gcc and clang
 static float myLog(float x) {
     return static_cast<float>(std::log(static_cast<double>(x)));
 }
@@ -34,7 +34,6 @@ namespace Neural {
         float cross_entropy = (-1.0 / (float)num_rows) * logits.sum();
         
         ArrayX_RowMajor<int> max_col = ArrayX_RowMajor<int>(num_rows, 1);
-        auto indices_labels = Labels::toIndicesLabels(one_hot_labels);
         rangeParExec(
             num_rows,
             [&](int& row_number) {
@@ -43,6 +42,8 @@ namespace Neural {
                 max_col(row_number) = i;
             }
         );
+
+        auto indices_labels = Labels::toIndicesLabels(one_hot_labels);
         float misclas = (1.0 / (float)num_rows)*((max_col != indices_labels.array()).template cast<float>().sum());
 
         auto gradient = (1.0 / num_rows) * (softmaxed - labels_float);
