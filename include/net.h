@@ -10,7 +10,7 @@
 
 namespace Neural {
     /*
-    * @brief: Encapsulates a feedforward neural network.
+    * @brief: Encapsulates a feedforward neural network
     *
     * Uses CRTP for further specialization (e.g. loss function)
     * 
@@ -19,19 +19,18 @@ namespace Neural {
     * @tparam EigenType_2: Must be `Eigen::T<bool, Eigen::Dynamic, Eigen::Dynamic>` where `T` is`Matrix
     *                      or Array (`T` must be the same in `EigenType_2` and `EigenType_1`)
     * @tparam LayerType: Class of the output layer. Expected to have member functions
+    *                    `std::pair<EigenType_1, EigenType_1> feedForward(EigenType_1)`,
+    *                    `std::pair<EigenType_1, EigenType_1> seedBackProp(EigenType_1, EigenType_1)` and 
+    *                    `void updateWeights(EigenType_1, EigenType_1, float)`
     * @tparam Impl: Class of the dervied class (for CRTP). Expected to have member variable `T loss` and
     *               member function `T evaluate(EigenType_1, EigenType_2)` where `T` can vary.
-    * `  
-    * `std::pair<EigenType_1, EigenType_1> feedForward(EigenType_1)`,
-    * `std::pair<EigenType_1, EigenType_1> seedBackProp(EigenType_1, EigenType_1)` and 
-    * `void updateWeights(EigenType_1, EigenType_1, float)`
     */
     template <typename EigenType_1, typename EigenType_2, typename LayerType, 
               template <typename, typename, typename> class Impl>
     class FeedFwdNN {
     public:
         /*
-        * @brief: Trains neural network. Will update weights of every constituent layer.
+        * @brief: Trains neural network. Will update weights of every constituent layer
         *
         * @param lr: The learning rate
         * @param curr_inputs: Inputs to train on    
@@ -73,12 +72,12 @@ namespace Neural {
         /*
         * @brief: Adds a hidden layer to network. 
         *
-        * @tparam LayerType_other: Class of hidden layer to be added. Expected to implement functions`
+        * @tparam LayerType_other: Class of hidden layer to be added. Expected to implement functions
         *                          `std::pair<EigenType_1, EigenType_1> feedForward(EigenType_1)`, 
         *                          `std::pair<EigenType_1, EigenType_1> backPropagate(EigenType_1, EigenType_1)` and
         *                          `void updateWeights(EigenType_1, EigenType_1, float)`
         * 
-        * @param layer: Obj to be added as hidden layer. Must be modifiable.
+        * @param layer: Obj to be added as hidden layer. Must be modifiable
         */
         template<typename LayerType_other>
         void pushLayer(LayerType_other& layer) {
@@ -106,7 +105,7 @@ namespace Neural {
          * 
          * @param inputs: Default inputs to train on
          * @param one_hot_labels: Default (one-hot-shot encoded) labels to train on
-         * @param output_layer: Output layer object. Must be modifiable (not const).
+         * @param output_layer: Output layer object. Must be modifiable (not const)
          */
         FeedFwdNN(const EigenType_1& inputs, const EigenType_2& one_hot_labels, LayerType& output_layer) : 
                   inputs(inputs), 
@@ -127,7 +126,7 @@ namespace Neural {
                                && std::is_same_v<MatrixX_RowMajor<bool>, ArrayX_RowMajor<bool>>));
         }
 
-        // Will call `feedForward` function on every constituent layer to perform forward pass.
+        // Will call `feedForward` function on every constituent layer to perform forward pass
         auto fwdPass(const EigenType_1& curr_inputs,
                      const EigenType_2& curr_one_hot_labels,
                      bool update_loss = false) {
@@ -213,30 +212,30 @@ namespace Neural {
 
     private:
         Impl<EigenType_1, EigenType_2, LayerType>* crtp_handle;
-};
+    };
 
-// Forward decl.
-template<typename EigenType_1, typename EigenType_2, typename LayerType>
-class MultiClassNN;
-
-template<typename EigenType_1, typename EigenType_2, typename LayerType>
-using MultiClassNNImpl = MultiClassNN<EigenType_1, EigenType_2, LayerType>;
-
-/*
- * @brief: Implementation of categorical cross entropy neural network, derived from class `FeedFwdNN` 
- *         using CRTP pattern. 
-*/
-template<typename EigenType_1, typename EigenType_2, typename LayerType>
-class MultiClassNN : public FeedFwdNN<EigenType_1, EigenType_2, LayerType, MultiClassNNImpl> {
-public:
-    MultiClassNN(const EigenType_1& inputs, const EigenType_2& one_hot_labels, LayerType& output_layer) :
-        FeedFwdNN<EigenType_1, EigenType_2, LayerType, MultiClassNNImpl>(inputs, one_hot_labels, output_layer) {}
-
-    auto evaluate(const EigenType_1& outputs, const EigenType_2& one_hot_labels) {
-        auto entropy_gradient = Neural::softMaxLoss(outputs, one_hot_labels);
-        return entropy_gradient;
-    }
+    // Forward decl.
+    template<typename EigenType_1, typename EigenType_2, typename LayerType>
+    class MultiClassNN;
     
-    std::pair<float, float> loss;
-};
+    template<typename EigenType_1, typename EigenType_2, typename LayerType>
+    using MultiClassNNImpl = MultiClassNN<EigenType_1, EigenType_2, LayerType>;
+    
+    /*
+     * @brief: Implementation of categorical cross entropy neural network, derived from class `FeedFwdNN` 
+     *         using CRTP pattern 
+     */
+    template<typename EigenType_1, typename EigenType_2, typename LayerType>
+    class MultiClassNN : public FeedFwdNN<EigenType_1, EigenType_2, LayerType, MultiClassNNImpl> {
+    public:
+        MultiClassNN(const EigenType_1& inputs, const EigenType_2& one_hot_labels, LayerType& output_layer) :
+            FeedFwdNN<EigenType_1, EigenType_2, LayerType, MultiClassNNImpl>(inputs, one_hot_labels, output_layer) {}
+    
+        auto evaluate(const EigenType_1& outputs, const EigenType_2& one_hot_labels) {
+            auto entropy_gradient = Neural::softMaxLoss(outputs, one_hot_labels);
+            return entropy_gradient;
+        }
+        
+        std::pair<float, float> loss;
+    };
 }

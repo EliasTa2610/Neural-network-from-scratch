@@ -13,7 +13,7 @@ namespace Neural {
     * 
     * Uses CRTP pattern for further specialization. Derived class must implement member
     * functions `float activate(float)` and `float differentiate(float)`. The latter should
-    * be the derivative of the former.
+    * be the derivative of the former
     * 
     * @tparam EigenType: Must be `Eigen::T<float, Eigen::Dynamic, Eigen::Dynamic>`
     * where `T` is `Array` or `Matrix`
@@ -46,7 +46,7 @@ namespace Neural {
             }
         
         // To be used if instance is output layer. Corrects @gradient in accordance to the
-        // layer's activation function.
+        // layer's activation function
         auto seedBackProp(const ArrayX_RowMajor_Ref<float>& signals,
                           const ArrayX_RowMajor_Ref<float>& gradient) {
             auto diff_signals = signals.unaryExpr([this](float f)
@@ -116,9 +116,8 @@ namespace Neural {
     using PlainLinearLayerImpl = PlainLinearLayer<EigenType>;
 
     /*
-    * @brief Implements simplest linear layer (no activation). Inherits from class PlainLinearLayer,
-    * using CRTP pattern.
-    *
+    * @brief Implements simplest linear layer (no activation). Inherits from class `PlainLinearLayer`,
+    * using CRTP pattern
     */
     template <typename EigenType>
     class PlainLinearLayer : public LinearLayer<EigenType, PlainLinearLayerImpl> {

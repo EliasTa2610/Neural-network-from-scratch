@@ -59,12 +59,12 @@ Instructions are for Bash shell. Adapt as needed. On Windows you may use [git ba
 
 5. Run the executable.
    
-   If using command line compiler: \
+   If using command line compiler:
 
    `$ cd ./build`\
    `$ ./NeuralNet`
 
-   If Using Microsoft Visual Studio:
+   If using Microsoft Visual Studio:
 
    `$ cd ./build/Debug`\
    `$ ./NeuralNet`

@@ -13,7 +13,7 @@ namespace Labels {
     /**
     * @brief Converts bool, dynamic, row-major `<Eigen::Matrix>` arg (or castable thereof)
     *        @one_hot_labels, representing one-hot-shot labels, to obj representing
-    *        indices labels.
+    *        indices labels
     *
     * @param one_hot_labels: one-hot-shot encoded labels
     * @return: int, dynamic, row-major `<Eigen::Matrix>` obj containing indices labels
@@ -34,7 +34,7 @@ namespace Labels {
     * @brief Converts int, dynamic, column `<Eigen::Matrix>` arg (or castable thereof)
     *        @indices_labels, representing indices labels, to obj representing
     *        one-hot-shot labels. Number of label classes must be specified through
-             `* <Eigen::Index>` arg @num_classes.
+             `* <Eigen::Index>` arg @num_classes
     *
     * @param indices_labels: indices labels
     * @param num_classes: number of label classes
