@@ -6,7 +6,7 @@ Implementation of a feedforward neural network in C++, including the backpropaga
 
 This project was meant to refresh my memory on C++ and at the same time get a more intimate handle on the celebrated backpropagation algorithm (and also learn to work with Eigen's many quirks!). Initially, I was going to follow this [blog post](http://www.code-spot.co.za/2009/10/08/15-steps-to-implemented-a-neural-net/) but ended up taking a different direction. Namely, I use a softmax output layer and built my pipeline to be indefinitely extendible. 
 
-Backend code is entirely templated, thus headers only. Neural network pipeline uses curiously recurring template pattern (CRTP) for compile-time polymorphism. Implements the backward propagation alagorithm for feedforward neural networks and does not implement general computational graphs. 
+Backend code is entirely templated, thus headers only. Neural network pipeline uses curiously recurring template pattern (CRTP) for compile-time polymorphism. Implements the backward propagation algorithm for feedforward neural networks and not general computational graphs. 
 
 ## Requirements and Dependencies
 
