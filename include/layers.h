@@ -39,7 +39,7 @@ namespace Neural {
                 auto diff_signals = signals.unaryExpr([this](float f)
                                                       { return this->crtp_handle->differentiate(f); });
 
-                auto gradient = diff_signals * tgradient;
+                auto gradient = diff_signals * tgradient; // Element-wise product
                 auto new_tgradient = transformGradient(diff_signals);
 
                 return std::make_pair(MatOrArray<EigenType>::eval(gradient), new_tgradient);
