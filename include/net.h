@@ -5,7 +5,7 @@
 #include <functional>
 #include <Eigen/Core>
 #include "../utilities/types.h"
-#include "../include/layers.h"
+#include "layers.h"
 #include "loss.h"
 
 namespace Neural {
